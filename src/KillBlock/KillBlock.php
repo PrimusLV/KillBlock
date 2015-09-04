@@ -44,7 +44,7 @@ class KillBlock extends PluginBase implements Listener{
 	public function onMove(PlayerMoveEvent $event){
 		$player = $event->getPlayer();
 		$block = $player->getLevel()->getBlock(new Vector3($player->getFloorX(), $player->getFloorY() - 1, $player->getFloorZ()));
-        	if($block->getId() === Block::EMERALD_BLOCK){
+        	if($block->getId() === $this->config->get('killblock-id')){
 			$player->kill();
 			if($this->config->get('use-custom-death-message')) $this->killedByBlock = true;
 			// Should call PlayerDeathEvent
